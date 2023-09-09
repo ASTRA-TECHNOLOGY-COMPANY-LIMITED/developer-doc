@@ -73,9 +73,9 @@
 
     Image đã được tạo và đẩy lên docker hub giờ sẽ cho chạy ứng dụng trên một instance mới bằng cách sử dụng Play with Docker
 
-Note : Vì Play with Docker sử dụng nền tảng amd64 nên nếu sử dụng ARM based Mac with Apple Silicon thì phải build lại theo câu lệnh "docker build --platform linux/amd64 -t YOUR-USER-NAME/getting-started ." sau đó đẩy lại lên docker hub
+    Note : Vì Play with Docker sử dụng nền tảng amd64 nên nếu sử dụng ARM based Mac with Apple Silicon thì phải build lại theo câu lệnh "docker build --platform linux/amd64 -t YOUR-USER-NAME/getting-started ." sau đó đẩy lại lên docker hub
 
 1. Truy cập vào Play with Docker và đăng nhập thông qua tài khoản docker hub
 2. Bắt đầu và **ADD NEW INSTANCE**
 3. Ở terminal khởi động ứng dụng vừa được đẩy "docker run -dp 0.0.0.0:3000:3000 YOUR-USER-NAME/getting-started"
-4. Nhấn vào open port 3000
+4. Nhấn vào open port 3000 và kiểm tra kết quả
