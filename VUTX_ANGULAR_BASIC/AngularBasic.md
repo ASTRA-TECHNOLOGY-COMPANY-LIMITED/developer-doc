@@ -158,7 +158,7 @@ How to Run:
 
 ## Component file
 
-`ts
+```jsx
 import { Component, OnInit } from '@angular/core';
 import { Posts } from '../../models/Posts.model';
 import { PostsService } from '../../services/posts.service';
@@ -203,7 +203,7 @@ export class PostsListComponent implements OnInit {
     this.currentIndex = index;
   }
 }
-`
+```
 
 ## Component structure
 - component.ts
@@ -223,7 +223,7 @@ If your project have prefix config. You will named component like this: prefix-c
 
 # Routing
 
-`
+```jsx
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PostsListComponent } from './components/posts-list/posts-list.component';
@@ -270,4 +270,4 @@ import { PostsListComponent } from './components/posts-list/posts-list.component
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-`
+```
