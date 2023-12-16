@@ -153,3 +153,121 @@ How to Run:
 - `cd angular17-curd`
 - `npm i`
 - `npm start`
+
+# Component
+
+## Component file
+
+`ts
+import { Component, OnInit } from '@angular/core';
+import { Posts } from '../../models/Posts.model';
+import { PostsService } from '../../services/posts.service';
+
+@Component({
+  selector: 'app-posts-list',
+  templateUrl: './posts-list.component.html',
+  styleUrls: ['./posts-list.component.css'],
+})
+export class PostsListComponent implements OnInit {
+  posts?: Posts[];
+  currentPost?: Posts;
+  currentIndex = -1;
+  title = '';
+
+  constructor(private postService: PostsService) {}
+
+  ngOnInit(): void {
+    this.retrievePosts();
+  }
+
+  retrievePosts(): void {
+    this.postService.getAll().subscribe(
+      (data: any) => {
+        this.posts = data;
+        console.log(data);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  refreshList(): void {
+    this.retrievePosts();
+    this.currentPost = undefined;
+    this.currentIndex = -1;
+  }
+
+  setActivePost(post: Posts, index: number): void {
+    this.currentPost = post;
+    this.currentIndex = index;
+  }
+}
+`
+
+## Component structure
+- component.ts
+- component.html
+- component.css
+
+## Named component
+First your will need to check angular.json
+
+`
+projects:{
+   "prefix": "app"
+}
+`
+
+If your project have prefix config. You will named component like this: prefix-componentName
+
+# Routing
+
+`ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { PostsListComponent } from './components/posts-list/posts-list.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'posts', pathMatch: 'full' },
+  { path: 'posts', component: PostsListComponent },
+  { path: 'posts/:id', component: PostDetailsComponent },
+  { path: 'add', component: AddPostComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
+`
+
+# Module
+
+`ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { PostsListComponent } from './components/posts-list/posts-list.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AddPostComponent,
+    PostDetailsComponent,
+    PostsListComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+`
