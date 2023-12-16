@@ -223,7 +223,7 @@ If your project have prefix config. You will named component like this: prefix-c
 
 # Routing
 
-`ts
+`
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PostsListComponent } from './components/posts-list/posts-list.component';
@@ -246,7 +246,7 @@ export class AppRoutingModule {}
 
 # Module
 
-`ts
+`
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
