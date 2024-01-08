@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+    labels:
+        run: ruda-pv
+    name: ruda-pv
+spec:
+    capacity:
+        storage: 30Gi
+    accessModes:
+        - ReadWriteMany
+    storageClassName: local-storage
+    hostPath:
+        path: "/Volumes/data"
