@@ -25,7 +25,7 @@
         app.services.ts: Chứa các hàm xử lý logic cho service, chẳng hạn như ứng dụng có service kết nối đến DB hoặc xử lý file,…
         app.controller.spec.ts: File dùng để viết unit test cho các controller.
 ## III.Thành phần
-![Alt text](overview.png)
+    ![Alt text](overview.png)
     - Nestjs gồm 3 thành phần chính: controller, provider và module.
     ### 1. Controllers
         ![Alt text](controller.png)
@@ -79,7 +79,8 @@
 
     ### 3. Modules
         - Trong NestJS, module là một lớp được chú thích bằng decorator @Module(). Decorator @Module() cung cấp metadata mà NestJS sử dụng để tổ chức cấu trúc ứng dụng. Mỗi ứng dụng có ít nhất một module gốc, và module gốc này là điểm xuất phát mà NestJS sử dụng để xây dựng đồ thị ứng dụng - cấu trúc dữ liệu nội bộ mà NestJS dùng để giải quyết các mối quan hệ và phụ thuộc giữa module và provider.
-        ![Alt text](modules.png)
+![Alt text](modules.png)
+
         Module trong NestJS thường bao gồm:
             - Providers: Các dịch vụ sẽ được khởi tạo bởi injector của NestJS và có thể được chia sẻ ít nhất trong module này.
             - Controllers: Tập hợp các controller được định nghĩa trong module này và cần được khởi tạo.
@@ -87,6 +88,7 @@
             - Exports: Tập con các providers được cung cấp bởi module này và nên có sẵn trong các module khác nhập khẩu module này
     4. Middleware
         - Trong NestJs, middleware là một chức năng được gọi trước khi route handle xử lí yêu cầu. MiddleWare có quyền truy cập đối tượng request và respose cũng như hàm next()
+![Alt text](middleWare.png)
         - Middle ware có thể thực hiện:
             . thực hiện bất kì code nào
             . thay đổi request và respose obj
