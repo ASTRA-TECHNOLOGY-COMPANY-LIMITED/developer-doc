@@ -2,8 +2,9 @@
 
 ## I. Giới thiệu
 Nestjs là gì?
-NestJS là một framework Node.JS cho phép xây dựng ứng dụng phía server. Đây là một framework mã nguồn mở, sử dụng TypeScript và rất linh hoạt để xây dựng các hệ thống backend
-Tại sao lại dùng Nestjs
+NestJS là một framework Node.JS cho phép xây dựng ứng dụng phía server. 
+Đây là một framework mã nguồn mở, sử dụng TypeScript và rất linh hoạt để xây dựng các hệ thống backend.
+Tại sao lại dùng Nestjs?
 Cho phép develop nhanh và hiệu quả hơn. Khả năng mở rộng tốt, dễ bảo trì ứng dụng.
 Là framework Node.js phát triển mạnh trong 3 năm trở lại đây. Cộng đồng hỗ trợ lớn, tích cực.
 Kết hợp phát triển front-end và mid-tier, một đặc điểm vượt trội so với hầu hết các ngôn ngữ khác.
