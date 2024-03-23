@@ -31,7 +31,9 @@
     - Nestjs gồm 3 thành phần chính: controller, provider và module.
 ###     1. Controllers
 ![Alt text](controller.png)
+
         Controllers chịu trách nhiệm nhận các request từ clide side và trả lại thông qua routing. Và dưới đây là 1 ví đụ đơn giản
+
         `import { Controller, Get } from '@nestjs/common';
 
             @Controller('cats')
@@ -50,8 +52,10 @@
             }
             }`
 ###     Route:
+
             - NestJs controller hỗ trợ tốt cho các kiểu route thông thường như ví dụ trên và ở đây chúng ta cũng có thể dùng Route wildcards với cú pháp sau: `@Get('ab*cd')` thì nó sẽ mactch với "abcd", "abccd", "ab_cd".Dấu gạch nối ( -) và dấu chấm (.) được hiểu theo nghĩa đen bằng các đường dẫn dựa trên chuỗi.
 ###     Header
+
             - Chúng ta có thể tự custom respose header bằng cách sử dụng @Header() hoặc dùng res.header()
             `@Post()
              @Header('Cache-Control', 'none')
@@ -60,6 +64,7 @@
              }`
 
 ###     2.Providers
+
             Trong NestJS, "providers" là một trong những khái niệm cơ bản và quan trọng nhất, chúng đóng một vai trò trung tâm trong cách thức hoạt động của ứng dụng. Providers có thể là bất kỳ thứ gì có thể được "inject" (tiêm) vào các phần khác của ứng dụng, như là các lớp dịch vụ, giá trị hằng số, hoặc thậm chí là một hàm đơn giản. Khái niệm này giúp NestJS hỗ trợ tính năng Dependency Injection (DI), một kỹ thuật thiết kế phần mềm cho phép việc tạo ra các lớp phụ thuộc một cách linh hoạt và dễ dàng quản lý.
 ![Alt text](provider.png)
             Dưới đây là một số điểm chính về providers trong NestJS:
@@ -77,29 +82,34 @@
                 - Factory Providers: Cung cấp một hàm factory để tạo ra các providers.
                 - Value Providers: Cung cấp một giá trị cụ thể làm provider, có thể hữu ích cho việc cấu hình ứng dụng hoặc cung cấp mock data cho testing.
                 - Class Providers: Sử dụng một lớp cụ thể như một provider, cho phép bạn tùy chỉnh việc triển khai.
-                
+
             4. Lợi ích:
                 - Loose Coupling: Giảm sự phụ thuộc giữa các phần của ứng dụng, làm cho code dễ bảo trì và mở rộng hơn.
                 - Testability: Việc sử dụng DI và providers giúp việc mock và test các phần của ứng dụng trở nên dễ dàng hơn.
                 - Flexibility: Dễ dàng thay đổi giữa các triển khai của cùng một interface mà không cần sửa đổi code sử dụng interface đó.
 
 ###     3. Modules
+
         - Trong NestJS, module là một lớp được chú thích bằng decorator @Module(). Decorator @Module() cung cấp metadata mà NestJS sử dụng để tổ chức cấu trúc ứng dụng. Mỗi ứng dụng có ít nhất một module gốc, và module gốc này là điểm xuất phát mà NestJS sử dụng để xây dựng đồ thị ứng dụng - cấu trúc dữ liệu nội bộ mà NestJS dùng để giải quyết các mối quan hệ và phụ thuộc giữa module và provider.
 ![Alt text](modules.png)
+
         Module trong NestJS thường bao gồm:
             - Providers: Các dịch vụ sẽ được khởi tạo bởi injector của NestJS và có thể được chia sẻ ít nhất trong module này.
             - Controllers: Tập hợp các controller được định nghĩa trong module này và cần được khởi tạo.
             - Imports: Danh sách các module đã nhập khẩu mà xuất các providers cần thiết trong module này.
             - Exports: Tập con các providers được cung cấp bởi module này và nên có sẵn trong các module khác nhập khẩu module này
-    4. Middleware
-        - Trong NestJs, middleware là một chức năng được gọi trước khi route handle xử lí yêu cầu. MiddleWare có quyền truy cập đối tượng request và respose cũng như hàm next()
+###     4. Middleware
+
+            - Trong NestJs, middleware là một chức năng được gọi trước khi route handle xử lí yêu cầu. MiddleWare có quyền truy cập đối tượng request và respose cũng như hàm next()
 ![Alt text](middleWare.png)
-        - Middle ware có thể thực hiện:
-            . thực hiện bất kì code nào
-            . thay đổi request và respose obj
-            . kết thúc chu kì request-respose
-            . gọi hàm middleware tiếp theo với next(). Nếu middleware hiện tại không được next() để sang bước tiếp theo thì request sẽ bị treo
-        - MiddleWare trong nestjs có thể được triển khai dưới dạng hàm hoặc 1 lớp với decorator @Injectable
+            
+            - Middle ware có thể thực hiện:
+                . thực hiện bất kì code nào
+                . thay đổi request và respose obj
+                . kết thúc chu kì request-respose
+                . gọi hàm middleware tiếp theo với next(). Nếu middleware hiện tại không được next() để sang bước tiếp theo thì request sẽ bị treo
+
+            - MiddleWare trong nestjs có thể được triển khai dưới dạng hàm hoặc 1 lớp với decorator @Injectable
 
 
 
