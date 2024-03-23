@@ -63,17 +63,21 @@
             Trong NestJS, "providers" là một trong những khái niệm cơ bản và quan trọng nhất, chúng đóng một vai trò trung tâm trong cách thức hoạt động của ứng dụng. Providers có thể là bất kỳ thứ gì có thể được "inject" (tiêm) vào các phần khác của ứng dụng, như là các lớp dịch vụ, giá trị hằng số, hoặc thậm chí là một hàm đơn giản. Khái niệm này giúp NestJS hỗ trợ tính năng Dependency Injection (DI), một kỹ thuật thiết kế phần mềm cho phép việc tạo ra các lớp phụ thuộc một cách linh hoạt và dễ dàng quản lý.
 ![Alt text](provider.png)
             Dưới đây là một số điểm chính về providers trong NestJS:
+
             1. Khái niệm cơ bản:
                 - Dependency Injection: Providers cho phép NestJS áp dụng mô hình Dependency Injection, giúp giảm sự phụ thuộc trực tiếp giữa các lớp phần mềm. Thay vào đó, các phụ thuộc (dependencies) được "inject" vào lớp cần chúng thông qua constructor hoặc thông qua các setter/getter methods.
                 - Reusable: Providers thường được tạo ra như là các singleton, điều này có nghĩa là bạn có thể tái sử dụng chúng trong nhiều phần khác nhau của ứng dụng mà không cần phải tạo ra nhiều thực thể.
+
             2. Cách sử dụng:
                 - Trong một ứng dụng NestJS, bạn có thể định nghĩa providers trong một module thông qua thuộc tính providers trong decorator @Module(). Sau đó, bạn có thể yêu cầu NestJS inject những providers này vào các controllers, các providers khác, hoặc modules thông qua constructor của chúng.
+
             3. Loại Providers:
                 - Dịch vụ (Services): Lớp dịch vụ thực hiện một số logic kinh doanh cụ thể và có thể được inject vào các controllers hoặc các services khác.
                 - Repositories: Các lớp thao tác dữ liệu, thường được sử dụng để tương tác với cơ sở dữ liệu.
                 - Factory Providers: Cung cấp một hàm factory để tạo ra các providers.
                 - Value Providers: Cung cấp một giá trị cụ thể làm provider, có thể hữu ích cho việc cấu hình ứng dụng hoặc cung cấp mock data cho testing.
                 - Class Providers: Sử dụng một lớp cụ thể như một provider, cho phép bạn tùy chỉnh việc triển khai.
+                
             4. Lợi ích:
                 - Loose Coupling: Giảm sự phụ thuộc giữa các phần của ứng dụng, làm cho code dễ bảo trì và mở rộng hơn.
                 - Testability: Việc sử dụng DI và providers giúp việc mock và test các phần của ứng dụng trở nên dễ dàng hơn.
