@@ -1,16 +1,16 @@
 # Nestjs
 
 ## I. Giới thiệu
-    Nestjs là gì?
-       NestJS là một framework Node.JS cho phép xây dựng ứng dụng phía server. Đây là một framework mã nguồn mở, sử dụng TypeScript và rất linh hoạt để xây dựng các hệ thống backend
-    Tại sao lại dùng Nestjs
-        Cho phép develop nhanh và hiệu quả hơn. Khả năng mở rộng tốt, dễ bảo trì ứng dụng.
-        Là framework Node.js phát triển mạnh trong 3 năm trở lại đây. Cộng đồng hỗ trợ lớn, tích cực.
-        Kết hợp phát triển front-end và mid-tier, một đặc điểm vượt trội so với hầu hết các ngôn ngữ khác.
-        Sử dụng TypeScript, cho phép thích ứng nhanh chóng với các thay đổi khi JavaScript đang ngày càng phát triển mạnh mẽ.
-        - Được xây dựng chuyên dùng cho các ứng dụng doanh nghiệp có quy mô lớn.
-        - Cung cấp kiến trúc ứng dụng độc lập, cho phép các developer tạo ra những ứng dụng dễ test, dễ mở rộng và dễ bảo trì.
-        - Cho phép xây dựng ứng dụng Rest API, MVC, microservices, GraphQL, Web Socket hay CRON job.
+Nestjs là gì?
+NestJS là một framework Node.JS cho phép xây dựng ứng dụng phía server. Đây là một framework mã nguồn mở, sử dụng TypeScript và rất linh hoạt để xây dựng các hệ thống backend
+Tại sao lại dùng Nestjs
+Cho phép develop nhanh và hiệu quả hơn. Khả năng mở rộng tốt, dễ bảo trì ứng dụng.
+Là framework Node.js phát triển mạnh trong 3 năm trở lại đây. Cộng đồng hỗ trợ lớn, tích cực.
+Kết hợp phát triển front-end và mid-tier, một đặc điểm vượt trội so với hầu hết các ngôn ngữ khác.
+Sử dụng TypeScript, cho phép thích ứng nhanh chóng với các thay đổi khi JavaScript đang ngày càng phát triển mạnh mẽ.
+Được xây dựng chuyên dùng cho các ứng dụng doanh nghiệp có quy mô lớn.
+Cung cấp kiến trúc ứng dụng độc lập, cho phép các developer tạo ra những ứng dụng dễ test, dễ mở rộng và dễ bảo trì.
+Cho phép xây dựng ứng dụng Rest API, MVC, microservices, GraphQL, Web Socket hay CRON job.
 ## II. Cách cài đặt
     - Yêu cầu nodejs >=16
     - Chọn folder bạn muốn lưu và bật terminal gõ câu lệnh sau
