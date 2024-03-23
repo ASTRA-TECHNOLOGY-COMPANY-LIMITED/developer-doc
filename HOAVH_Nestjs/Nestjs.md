@@ -28,6 +28,21 @@
         . app.controller.spec.ts: File dùng để viết unit test cho các controller.
 ## III.Thành phần
 ![Alt text](overview.png)
+![Alt text](lifecycle.png)
+    - Chúng ta hãy đi qua 1 vòng đời requet trong nestjs:
+
+        1. Middleware: Middleware được gọi đầu tiên khi request đến server, chúng ta thường dùng để xử lý và thay đổi thông tin request trước khi truyền đến route handler. Đây là thành phần đầu tiên được gọi nên thông thường khi cấu hình dự án chúng ta sẽ sử dụng chúng đầu tiên.
+        2. Guard: Mục đích duy nhất của Guard là xác định xem có cho phép request được xử lý bởi route handler hay không tại run-time. Có thể các bạn sẽ có thắc mắc Guard và Middleware đều xử lý logic tương tự nhau, tuy nhiên về bản chất thì Middleware sau khi gọi hàm next() thì sẽ không biết handler nào sẽ được gọi sau đó. Ngược lại, Guard nhờ vào việc có thể truy cập vào ExcecutionContext instance nên có thể biết được handler nào tiếp theo sẽ được gọi sau khi gọi hàm next(). Việc sử dụng Guard giúp chúng ta đưa logic xử lý vào chu trình của ứng dụng một cách rõ ràng và dễ hiểu
+        3. Interceptors:  Nói sơ qua về Interceptors thì nó cho phép chúng ta xử lý các request và response trước khi chúng được xử lý bởi controller hoặc được trả về cho client. Vì thế chúng ta có thể chèn thêm custom logic vào quá trình xử lý request/response của ứng dụng
+
+        4. Mục đích chính của Pipe là để kiểm tra, chuyển đổi và/hoặc sàng lọc dữ liệu được gửi và nhận về từ client.
+
+        5. Controller: Phần này thì không còn xa lạ gì với chúng ta, route handler xử lý logic chính của API được gọi tới.
+
+        6. Service: Service là nơi mà Controller gọi tới để xử lý yêu cầu, hoặc cũng có thể không cần gọi tới nếu bản thân Controller có thể tự giải quyết được
+        
+        7. Exception Filter: Khác với NodeJS thuần, khi gặp exceptions ứng dụng sẽ bị crash,Exception filter được NestJS tạo ra để xử lý các ngoại lệ (exceptions) trong ứng dụng. Nó giúp chúng ta kiểm soát và định hướng các ngoại lệ xảy ra trong ứng dụng và trả về một phản hồi thích hợp cho user. Nếu các exceptions không được chúng ta tự handle thì sẽ được chuyển đến cho Exception Filter xử lý
+
     - Nestjs gồm 3 thành phần chính: controller, provider và module.
 ###     1. Controllers
 ![Alt text](controller.png)
