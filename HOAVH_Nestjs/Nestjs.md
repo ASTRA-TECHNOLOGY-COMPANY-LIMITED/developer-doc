@@ -26,24 +26,34 @@
         . app.controller.ts: Chứa các router để xử lý các request và trả về response cho client.
         . app.services.ts: Chứa các hàm xử lý logic cho service, chẳng hạn như ứng dụng có service kết nối đến DB hoặc xử lý file,…
         . app.controller.spec.ts: File dùng để viết unit test cho các controller.
+
 ## III.Thành phần
 ![Alt text](overview.png)
 ![Alt text](lifecycle.png)
-    - Chúng ta hãy đi qua 1 vòng đời requet trong nestjs:
+
+    - 1 vòng đời requet trong nestjs:
 
         1. Middleware: Middleware được gọi đầu tiên khi request đến server, chúng ta thường dùng để xử lý và thay đổi thông tin request trước khi truyền đến route handler. Đây là thành phần đầu tiên được gọi nên thông thường khi cấu hình dự án chúng ta sẽ sử dụng chúng đầu tiên.
-        2. Guard: Mục đích duy nhất của Guard là xác định xem có cho phép request được xử lý bởi route handler hay không tại run-time. Có thể các bạn sẽ có thắc mắc Guard và Middleware đều xử lý logic tương tự nhau, tuy nhiên về bản chất thì Middleware sau khi gọi hàm next() thì sẽ không biết handler nào sẽ được gọi sau đó. Ngược lại, Guard nhờ vào việc có thể truy cập vào ExcecutionContext instance nên có thể biết được handler nào tiếp theo sẽ được gọi sau khi gọi hàm next(). Việc sử dụng Guard giúp chúng ta đưa logic xử lý vào chu trình của ứng dụng một cách rõ ràng và dễ hiểu
-        3. Interceptors:  Nói sơ qua về Interceptors thì nó cho phép chúng ta xử lý các request và response trước khi chúng được xử lý bởi controller hoặc được trả về cho client. Vì thế chúng ta có thể chèn thêm custom logic vào quá trình xử lý request/response của ứng dụng
 
-        4. Mục đích chính của Pipe là để kiểm tra, chuyển đổi và/hoặc sàng lọc dữ liệu được gửi và nhận về từ client.
+        2. Guard: 
+            Mục đích duy nhất của Guard là xác định xem có cho phép request được xử lý bởi route handler hay không tại run-time. Có thể có thắc mắc Guard và Middleware đều xử lý logic tương tự nhau, tuy nhiên về bản chất thì Middleware sau khi gọi hàm next() thì sẽ không biết handler nào sẽ được gọi sau đó. Ngược lại, Guard nhờ vào việc có thể truy cập vào ExcecutionContext instance nên có thể biết được handler nào tiếp theo sẽ được gọi sau khi gọi hàm next(). Việc sử dụng Guard giúp chúng ta đưa logic xử lý vào chu trình của ứng dụng một cách rõ ràng và dễ hiểu
 
-        5. Controller: Phần này thì không còn xa lạ gì với chúng ta, route handler xử lý logic chính của API được gọi tới.
+        3. Interceptors:  
+            Nói sơ qua về Interceptors thì nó cho phép chúng ta xử lý các request và response trước khi chúng được xử lý bởi controller hoặc được trả về cho client. Vì thế chúng ta có thể chèn thêm custom logic vào quá trình xử lý request/response của ứng dụng
 
-        6. Service: Service là nơi mà Controller gọi tới để xử lý yêu cầu, hoặc cũng có thể không cần gọi tới nếu bản thân Controller có thể tự giải quyết được
+        4. Pipe : 
+            Mục đích chính của Pipe là để kiểm tra, chuyển đổi và/hoặc sàng lọc dữ liệu được gửi và nhận về từ client.
+
+        5. Controller: 
+            Phần này thì không còn xa lạ gì với chúng ta, route handler xử lý logic chính của API được gọi tới.
+
+        6. Service: 
+            Service là nơi mà Controller gọi tới để xử lý yêu cầu, hoặc cũng có thể không cần gọi tới nếu bản thân Controller có thể tự giải quyết được
         
-        7. Exception Filter: Khác với NodeJS thuần, khi gặp exceptions ứng dụng sẽ bị crash,Exception filter được NestJS tạo ra để xử lý các ngoại lệ (exceptions) trong ứng dụng. Nó giúp chúng ta kiểm soát và định hướng các ngoại lệ xảy ra trong ứng dụng và trả về một phản hồi thích hợp cho user. Nếu các exceptions không được chúng ta tự handle thì sẽ được chuyển đến cho Exception Filter xử lý
+        7. Exception Filter: 
+            Khác với NodeJS thuần, khi gặp exceptions ứng dụng sẽ bị crash,Exception filter được NestJS tạo ra để xử lý các ngoại lệ (exceptions) trong ứng dụng. 
+            Nó giúp chúng ta kiểm soát và định hướng các ngoại lệ xảy ra trong ứng dụng và trả về một phản hồi thích hợp cho user. Nếu các exceptions không được chúng ta tự handle thì sẽ được chuyển đến cho Exception Filter xử lý
 
-    - Nestjs gồm 3 thành phần chính: controller, provider và module.
 ###     1. Controllers
 ![Alt text](controller.png)
 
@@ -80,16 +90,22 @@
 
 ###     2.Providers
 
-            Trong NestJS, "providers" là một trong những khái niệm cơ bản và quan trọng nhất, chúng đóng một vai trò trung tâm trong cách thức hoạt động của ứng dụng. Providers có thể là bất kỳ thứ gì có thể được "inject" (tiêm) vào các phần khác của ứng dụng, như là các lớp dịch vụ, giá trị hằng số, hoặc thậm chí là một hàm đơn giản. Khái niệm này giúp NestJS hỗ trợ tính năng Dependency Injection (DI), một kỹ thuật thiết kế phần mềm cho phép việc tạo ra các lớp phụ thuộc một cách linh hoạt và dễ dàng quản lý.
+            Trong NestJS, "providers" là một trong những khái niệm cơ bản và quan trọng nhất, chúng đóng một vai trò trung tâm trong cách thức hoạt động của ứng dụng. 
+
+            Providers có thể là bất kỳ thứ gì có thể được "inject" (tiêm) vào các phần khác của ứng dụng, như là các lớp dịch vụ, giá trị hằng số, hoặc thậm chí là một hàm đơn giản. 
+
+            Khái niệm này giúp NestJS hỗ trợ tính năng Dependency Injection (DI), một kỹ thuật thiết kế phần mềm cho phép việc tạo ra các lớp phụ thuộc một cách linh hoạt và dễ dàng quản lý.
 ![Alt text](provider.png)
             Dưới đây là một số điểm chính về providers trong NestJS:
 
             1. Khái niệm cơ bản:
-                - Dependency Injection: Providers cho phép NestJS áp dụng mô hình Dependency Injection, giúp giảm sự phụ thuộc trực tiếp giữa các lớp phần mềm. Thay vào đó, các phụ thuộc (dependencies) được "inject" vào lớp cần chúng thông qua constructor hoặc thông qua các setter/getter methods.
+                - Dependency Injection: Providers cho phép NestJS áp dụng mô hình Dependency Injection, giúp giảm sự phụ thuộc trực tiếp giữa các lớp phần mềm. 
+                Thay vào đó, các phụ thuộc (dependencies) được "inject" vào lớp cần chúng thông qua constructor hoặc thông qua các setter/getter methods.
                 - Reusable: Providers thường được tạo ra như là các singleton, điều này có nghĩa là bạn có thể tái sử dụng chúng trong nhiều phần khác nhau của ứng dụng mà không cần phải tạo ra nhiều thực thể.
 
             2. Cách sử dụng:
-                - Trong một ứng dụng NestJS, bạn có thể định nghĩa providers trong một module thông qua thuộc tính providers trong decorator @Module(). Sau đó, bạn có thể yêu cầu NestJS inject những providers này vào các controllers, các providers khác, hoặc modules thông qua constructor của chúng.
+                - Trong một ứng dụng NestJS, ta có thể định nghĩa providers trong một module thông qua thuộc tính providers trong decorator @Module(). 
+                Sau đó, ta có thể yêu cầu NestJS inject những providers này vào các controllers, các providers khác, hoặc modules thông qua constructor của chúng.
 
             3. Loại Providers:
                 - Dịch vụ (Services): Lớp dịch vụ thực hiện một số logic kinh doanh cụ thể và có thể được inject vào các controllers hoặc các services khác.
@@ -125,7 +141,7 @@
                 . gọi hàm middleware tiếp theo với next(). Nếu middleware hiện tại không được next() để sang bước tiếp theo thì request sẽ bị treo
 
             - MiddleWare trong nestjs có thể được triển khai dưới dạng hàm hoặc 1 lớp với decorator @Injectable
-
+###     5.Guards
 
 
 
