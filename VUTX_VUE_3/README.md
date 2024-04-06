@@ -1,5 +1,27 @@
 # Vue 3
 
+- VueJs là một framwork của Javscript dùng để xây dưng giao diện người dùng bằng một ứng dụng SPA.
+- Ưu điểm của Vue3:
+- Composition API: Vue 3 giới thiệu Composition API, giúp các nhà phát triển tổ chức và tái sử dụng mã nguồn một cách hiệu quả hơn, đặc biệt là trong các thành phần phức tạp.
+- HHiệu Suất Cải Thiện: Vue 3 có hiệu suất tốt hơn đáng kể so với Vue 2, với kích thước gói nhỏ hơn, tốc độ mount và patch nhanh hơn.
+- Hỗ Trợ TypeScript Tốt Hơn: Việc hỗ trợ TypeScript được cải thiện giúp dễ dàng phát triển các ứng dụng lớn, giảm thiểu lỗi và tăng tính bảo trì của mã nguồn.
+- Cải Tiến về Hệ Thống Phản Ứng: Hệ thống phản ứng của Vue 3 được viết lại bằng Proxy, giúp theo dõi sự thay đổi trạng thái ứng dụng một cách hiệu quả hơn.
+- Fragment, Teleport, và Suspense: Các thành phần mới như Fragment, Teleport và Suspense giúp giải quyết các vấn đề thường gặp như render nhiều nút gốc, xử lý các hộp thoại hoặc pop-up, và quản lý tải các thành phần một cách bất đồng bộ.
+- Điểm yếu:
+
+  - Hệ Sinh Thái Đang Phát Triển: Một số thư viện và công cụ của bên thứ ba có thể chưa hoàn toàn tương thích hoặc cập nhật để sử dụng tốt nhất với Vue 3.
+  - Học Composition API Có Thể Khó Khăn: Những người đã quen với Options API có thể mất thêm thời gian để làm quen với Composition API, mặc dù nó mang lại nhiều lợi ích.
+  - Tài Liệu Cần Thời Gian Để Thích Nghi: Cần thời gian để làm quen với các thay đổi và khái niệm mới trong tài liệu của Vue 3.
+
+- Tại sao nên sử dụng Vue3:
+
+  - Hiệu Suất và Tối Ưu Hóa: Vue 3 mang lại lợi ích về hiệu suất và kích thước gói cho dự án.
+  - Composition API: Cung cấp một cách linh hoạt và mạnh mẽ để xây dựng ứng dụng, đặc biệt hữu ích cho các ứng dụng lớn.
+  - Sẵn Sàng cho Tương Lai: Sử dụng Vue 3 giúp bạn tiếp cận với những tính năng và cải tiến mới nhất, giữ cho dự án của bạn luôn cập nhật.
+
+- So sánh với các ngôn ngữ khác
+  - Vue 3 khá dễ học khi bạn đã biết React.
+
 ## Require
 
 - Vite requires Node.js version 18+. 20+.
