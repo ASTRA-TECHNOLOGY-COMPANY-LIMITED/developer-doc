@@ -16,7 +16,7 @@ Con vẹt chính là **Language Model**. Nó là một thứ được train rấ
 
 LM sẽ đưa ra câu trả lời có xác suất xuất hiện lớn nhất trong dataset mà nó được train
 
-### 1.2. Large  Language Model (LLM)
+### 1.2. Large Language Model (LLM)
 
 **Large Language Model (LLM)** là một loại thuật toán mà sử dụng deep learning và được train bởi những data set rất lớn để hiểu, tóm tắt, sinh, dự đoán các thông tin.
 
@@ -39,10 +39,10 @@ Các model được train bởi các dataset khác nhau sẽ đưa ra những ou
 Tại sao lại gọi là “**Large**” Languague Model?
 
 1. **Có số lượng các parameter cực lớn** (mạng nơ-ron có nhiều layer, mối layer có nhiều unit; các parameters sẽ được sinh ra từ đường kết nối các unit với nhau)
-    - GPT-3.5 có số lượng parameter là 1.3 tỉ (về sau tăng lên 175 tỉ)
-    - GPT-4 có số lượng parameter là 1.76 nghìn tỉ
+   - GPT-3.5 có số lượng parameter là 1.3 tỉ (về sau tăng lên 175 tỉ)
+   - GPT-4 có số lượng parameter là 1.76 nghìn tỉ
 2. **Được train trên một lượng data set cực lớn**
-    - GPT-3.5 được train bởi 45TB text data (Cần khoảng 75 nghìn năm để con người có thể đọc hết số thông tin đó)
+   - GPT-3.5 được train bởi 45TB text data (Cần khoảng 75 nghìn năm để con người có thể đọc hết số thông tin đó)
 
 Để train ChatGPT, ta cần khoảng 10.000 Nvidia GPUs
 
@@ -63,15 +63,11 @@ Transformer là kiến trúc cốt lõi của các LLM. Cụ thể như nào th�
 Ta có thể dùng các kiến trúc khác như **Recurrent Neural Network (RNN)** để xử lý ngôn ngữ tự nhiên nhưng tại sao phải sử dụng **Transformer**?
 
 - Với kiến trúc của mạng **RNN**, các từ sẽ được đưa vào mạng một cách **lần lượt**. Vì vậy, ta không thể train dữ liệu một cách song song. Hệ quả là việc train sẽ mất rất nhiều thời gian, không tận dụng được việc chạy song song của GPU và đối với những câu văn dài, những từ ở đầu câu sẽ mất liên hệ với những từ ở cuối.
-    
-    ![Untitled](LangChainOverview/Untitled%205.png)
-    
+  ![Untitled](LangChainOverview/Untitled%205.png)
 - Với kiến trúc **Transformer**, ta có thể đưa **đồng thời** cả câu văn vào mạng để xử lý và lấy ra output là cả một câu thay vì phải đưa từng từ vào như RNN. Tuy nhiên, khi sử dụng Transformer, ta cần lưu ý 2 điều sau:
-    - **Positional Encoding**: Đánh dấu xem từ nào vào trước, từ nào vào sau để bảo toàn ý nghĩa của câu
-    - **Attention và Self-Attention**: Giúp các từ ngữ trong câu giữ được liên hệ với nhau về mặt logic (VD: Thơm và dứa,…)
-    
-    ![Untitled](LangChainOverview/Untitled%206.png)
-    
+  - **Positional Encoding**: Đánh dấu xem từ nào vào trước, từ nào vào sau để bảo toàn ý nghĩa của câu
+  - **Attention và Self-Attention**: Giúp các từ ngữ trong câu giữ được liên hệ với nhau về mặt logic (VD: Thơm và dứa,…)
+  ![Untitled](LangChainOverview/Untitled%206.png)
 
 ### 2.2. Finetuning
 
@@ -96,9 +92,9 @@ Nó cho phép ứng dụng:
 Framework này gồm nhiều phần phần:
 
 - **LangChain Libraries**: Hỗ trợ cho Python và JavaScript. Nó cung cấp:
-    - Các interface và tích hợp cho hàng loạt các components (text splitter, prompt template,…)
-    - Một run time đơn giản để kết hợp những component này thành chains và agents
-    - Những cài đặt có sẵn của chains và agents
+  - Các interface và tích hợp cho hàng loạt các components (text splitter, prompt template,…)
+  - Một run time đơn giản để kết hợp những component này thành chains và agents
+  - Những cài đặt có sẵn của chains và agents
 - **[LangChain Templates](https://python.langchain.com/docs/templates)**: Một tập các kiến trúc tham chiếu mà dễ dàng triển khai cho nhiều loại nhiệm vụ khác nhau. (Python only)
 - **[LangServe](https://python.langchain.com/docs/langserve)**: Một thư viện để triển khai các chain của LangChain dưới dạng một REST API. (Python only)
 - **[LangSmith](https://smith.langchain.com/)**: Một nền tàng lập trình cho phép ta debug, test, đánh giá và giám sát chains mà được xây dựng trên bất kỳ LLM framework nào và tích hợp liền mạch với LangChain.
@@ -110,7 +106,7 @@ Framework này gồm nhiều phần phần:
 ![Untitled](LangChainOverview/Untitled%209.png)
 
 - Chuẩn bị dữ liệu: Chuẩn bị những file pdf, website,… để ta chia nhỏ, trích xuất vector đặc trưng và đưa vào Vector DB
-    - Vector DB có nhiều loại. Có thể dùng Faiss, ChromaDB,… Ta cần index cho DB này để dễ dàng tìm kiếm
+  - Vector DB có nhiều loại. Có thể dùng Faiss, ChromaDB,… Ta cần index cho DB này để dễ dàng tìm kiếm
 - Khi người dùng nhập vào một Query, ta sử đưa query đó vào Prompt Template (Chain) và gửi nó qua một Embedding Model để trích xuất vector đặc trưng, đưa nó vào Query DB.
 - Query DB sẽ so sánh với Vector DB để lấy ra những Related Document (thông tin liên quan) rồi gửi Related Document và Prompt tới LLM.
 - LLM sẽ dựa vào đó để sình ra Response
@@ -121,8 +117,8 @@ Một số component cơ bản của LangChain gồm:
 
 - **Model**: Là LLM để sinh ra câu trả lời cho người dùng
 - **Embedding model - Retrieval model**: LLM để
-    - trích xuất đặc trưng (vector) của bối cảnh
-    - trích xuất đặc trưng (vector) từ câu hỏi của người dùng
+  - trích xuất đặc trưng (vector) của bối cảnh
+  - trích xuất đặc trưng (vector) từ câu hỏi của người dùng
 - **Chain**: Là một chuỗi các mắt xích, mỗi mắt xích sẽ làm một công việc cụ thể, rồi chuyển output của nó thành input cho mắt xích sau
 - **Prompt template**: Giúp ta tạo ra prompt một cách dễ dàng, có thể truyền các tham số vào
 - **Output parser**: Giúp ta định nghĩa ra format của output
@@ -251,7 +247,7 @@ LangSmith is a sophisticated online language translation tool. It leverages arti
 
 Ta sẽ cố gắng lấy dữ dữ liệu phù hợp bằng Retriever và truyền nó vào prompt. Retriever có thể được hỗ trợ bởi SQL table, internet,… nhưng trong trường hợp này, ta sẽ populate một vector store và dùng nó như một retriever. For more information on vectorstores, see [this documentation](https://js.langchain.com/docs/modules/data_connection/vectorstores).
 
-Đầu tiên, ta cần **load dữ liệu mà ta muốn index**. Ta sẽ sử dụng một [**document loader**](https://js.langchain.com/docs/integrations/document_loaders/web_loaders/web_cheerio) (để cào dữ liệu từ web) và **Cheerio** (thư viện để cào dữ liệu) để lấy dữ liệu từ webpage.
+Đầu tiên, ta cần **load dữ liệu mà ta muốn index**. Ta sẽ sử dụng một [**document loader**](https://js.langchain.com/docs/integrations/document_loaders/web_loaders/web_cheerio) dựa trên **Cheerio** (thư viện để cào dữ liệu) để lấy dữ liệu từ webpage.
 
 Cài đặt thư viện:
 
@@ -275,8 +271,8 @@ console.log(docs[0].pageContent.length);
 ```
 
 ```jsx
-1
-36542
+1;
+36542;
 ```
 
 Lưu ý rằng kích thước của loaded document (dữ liệu được cào xuống) là rất lớn và có thể vượt quá giới hạn của lượng dữ liệu mà ta có thể truyền vào một model call. Vì vậy, ta cần **chia document thành nhiều chunk** có thể quản lý được. Ta có thể sử dụng [text splitter](https://js.langchain.com/docs/modules/data_connection/document_transformers/):
@@ -297,12 +293,11 @@ const splitDocs = await splitter.splitDocuments(docs);
 
 console.log(splitDocs.length);
 console.log(splitDocs[0].pageContent.length);
-
 ```
 
 ```jsx
-49
-441
+49;
+441;
 ```
 
 Tiếp theo, ta cần index dữ liệu được cào xuống vào một vector store. Để làm được việc này, ta cần thêm một vài component, đó là [**embedding model**](https://js.langchain.com/docs/modules/data_connection/text_embedding) và [**vectorstore**](https://js.langchain.com/docs/modules/data_connection/vectorstores).
@@ -392,60 +387,57 @@ console.log(result.answer);
 LangSmith is a tool developed by LangChain that is used for debugging and monitoring LLMs, chains, and agents in order to improve their performance and reliability for use in production.
 ```
 
-- Full source code
-    
-    ```jsx
-    import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
-    import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-    import { OpenAIEmbeddings } from "@langchain/openai";
-    import { MemoryVectorStore } from "langchain/vectorstores/memory";
-    import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
-    import { ChatPromptTemplate } from "@langchain/core/prompts";
-    import { createRetrievalChain } from "langchain/chains/retrieval";
-    import { ChatOpenAI } from "@langchain/openai";
-    
-    const loader = new CheerioWebBaseLoader(
-      "https://docs.smith.langchain.com/user_guide"
-    );
-    const splitter = new RecursiveCharacterTextSplitter();
-    const embeddings = new OpenAIEmbeddings();
-    const chatModel = new ChatOpenAI({
-    });
-    
-    const docs = await loader.load();
-    const splitDocs = await splitter.splitDocuments(docs);
-    const vectorstore = await MemoryVectorStore.fromDocuments(
-      splitDocs,
-      embeddings
-    );
-    
-    const prompt =
-      ChatPromptTemplate.fromTemplate(`Answer the following question based only on the provided context:
-    
-    <context>
-    {context}
-    </context>
-    
-    Question: {input}`);
-    
-    const documentChain = await createStuffDocumentsChain({
-      llm: chatModel,
-      prompt,
-    });
-    
-    const retriever = vectorstore.asRetriever();
-    const retrievalChain = await createRetrievalChain({
-      combineDocsChain: documentChain,
-      retriever,
-    });
-    
-    const result = await retrievalChain.invoke({
-      input: "what is LangSmith?",
-    });
-    
-    console.log(result.answer);
-    ```
-    
+Full source code
+  ```jsx
+  import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
+  import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+  import { OpenAIEmbeddings } from "@langchain/openai";
+  import { MemoryVectorStore } from "langchain/vectorstores/memory";
+  import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
+  import { ChatPromptTemplate } from "@langchain/core/prompts";
+  import { createRetrievalChain } from "langchain/chains/retrieval";
+  import { ChatOpenAI } from "@langchain/openai";
+
+  const loader = new CheerioWebBaseLoader(
+    "https://docs.smith.langchain.com/user_guide"
+  );
+  const splitter = new RecursiveCharacterTextSplitter();
+  const embeddings = new OpenAIEmbeddings();
+  const chatModel = new ChatOpenAI({});
+
+  const docs = await loader.load();
+  const splitDocs = await splitter.splitDocuments(docs);
+  const vectorstore = await MemoryVectorStore.fromDocuments(
+    splitDocs,
+    embeddings
+  );
+
+  const prompt =
+    ChatPromptTemplate.fromTemplate(`Answer the following question based only on the provided context:
+  
+  <context>
+  {context}
+  </context>
+  
+  Question: {input}`);
+
+  const documentChain = await createStuffDocumentsChain({
+    llm: chatModel,
+    prompt,
+  });
+
+  const retriever = vectorstore.asRetriever();
+  const retrievalChain = await createRetrievalChain({
+    combineDocsChain: documentChain,
+    retriever,
+  });
+
+  const result = await retrievalChain.invoke({
+    input: "what is LangSmith?",
+  });
+
+  console.log(result.answer);
+  ```
 
 ### 3.6. Conversational retrieval chain
 
@@ -454,12 +446,12 @@ Những gì ta làm ở trên chỉ giúp ta trả lời một câu hỏi duy nh
 Khi sử dụng hàm `createRetrievalChain`, ta cần thay đổi 2 thứ:
 
 1. Retriever không chỉ dựa vào input gần nhất mà cần dựa vào cả cuộc trò chuyện
-    - Retriever của ta đang chỉ đưa những document **liên quan tới input gần nhất** vào chain
-    - Ta muốn đưa những document **liên quan tới cả cuộc trò chuyện**
-    - Vì vậy, ta cần LLM sinh ra cho ta một search query. Serach query sẽ giúp ta có được một retriever mới mà có thể lọc những document liên quan tới cả cuộc trò chuyện.
+   - Retriever của ta đang chỉ đưa những document **liên quan tới input gần nhất** vào chain
+   - Ta muốn đưa những document **liên quan tới cả cuộc trò chuyện**
+   - Vì vậy, ta cần LLM sinh ra cho ta một search query. Serach query sẽ giúp ta có được một retriever mới mà có thể lọc những document liên quan tới cả cuộc trò chuyện.
 2. The final LLM chain cũng cần quan tâm tới cả cuộc trò chyện
-    - LLM của ta chỉ xem xét bối cảnh và **input gần nhất** để đưa ra câu trả lời
-    - Ta muốn LLM xem xét bối cảnh và **cả cuộc trò truyện** để đưa ra câu trả lời
+   - LLM của ta chỉ xem xét bối cảnh và **input gần nhất** để đưa ra câu trả lời
+   - Ta muốn LLM xem xét bối cảnh và **cả cuộc trò truyện** để đưa ra câu trả lời
 
 ```jsx
 import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
@@ -532,5 +524,66 @@ const result2 = await conversationalRetrievalChain.invoke({
 });
 
 console.log(result2.answer);
+```
 
+### 3.7. PDF loader chain
+
+```jsx
+import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import { MemoryVectorStore } from "langchain/vectorstores/memory";
+import { OpenAIEmbeddings } from "@langchain/openai";
+import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { ChatOpenAI } from "@langchain/openai";
+import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
+import { createRetrievalChain } from "langchain/chains/retrieval";
+import { StructuredOutputParser } from "langchain/output_parsers";
+
+const splitter = new RecursiveCharacterTextSplitter();
+const loader = new PDFLoader("public/pdf/invoice.pdf");
+const embeddings = new OpenAIEmbeddings();
+const chatModel = new ChatOpenAI({});
+
+const docs = await loader.load();
+const splitDocs = await splitter.splitDocuments(docs);
+const vectorstore = await MemoryVectorStore.fromDocuments(
+  splitDocs,
+  embeddings
+);
+
+const parser = StructuredOutputParser.fromNamesAndDescriptions({
+  total: "total amount of money in the invoice",
+  tax: "total tax amount in the invoice",
+});
+
+const prompt =
+  ChatPromptTemplate.fromTemplate(`Answer the following question based only on the provided context:
+
+<context>
+{context}
+</context>
+
+Generate the response based on this structured output:
+{format_instructions}
+
+Question: {input}`);
+
+const documentChain = await createStuffDocumentsChain({
+  llm: chatModel,
+  prompt,
+  outputParser: parser,
+});
+
+const retriever = vectorstore.asRetriever();
+const retrievalChain = await createRetrievalChain({
+  combineDocsChain: documentChain,
+  retriever,
+});
+
+const result = await retrievalChain.invoke({
+  input: "what is the total money of this invoice?",
+  format_instructions: parser.getFormatInstructions(),
+});
+
+console.log(result.answer);
 ```
