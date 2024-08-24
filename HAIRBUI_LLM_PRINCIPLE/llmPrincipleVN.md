@@ -8,15 +8,15 @@ Các mô hình ngôn ngữ lớn (LLMs) là một loại trí tuệ nhân tạo 
 
 - **Mục đích**: Chuyển đổi văn bản thành các phần có thể quản lý được. Điều này giúp mô hình xử lý từ vựng đa dạng một cách hiệu quả.
 - **Quy trình**:
-		- Tách câu thành các token, có thể là từ hoặc các phần của từ.
-		- Sử dụng các kỹ thuật như Mã hóa cặp byte (BPE) để xử lý các từ không xác định bằng cách chia chúng thành các đơn vị phụ đã biết.
+  - Tách câu thành các token, có thể là từ hoặc các phần của từ.
+  - Sử dụng các kỹ thuật như Mã hóa cặp byte (BPE) để xử lý các từ không xác định bằng cách chia chúng thành các đơn vị phụ đã biết.
 
 ### Nhúng
 
 - **Mục đích**: Chuyển đổi các token thành các vector số mà mô hình có thể xử lý.
 - **Quy trình**:
-		- Mỗi token được ánh xạ thành một vector đa chiều.
-		- Các vector này nắm bắt các mối quan hệ ngữ nghĩa giữa các từ.
+  - Mỗi token được ánh xạ thành một vector đa chiều.
+  - Các vector này nắm bắt các mối quan hệ ngữ nghĩa giữa các từ.
 
 ## Bước 2: Kiến trúc mô hình
 
@@ -43,8 +43,8 @@ Các mô hình ngôn ngữ lớn (LLMs) là một loại trí tuệ nhân tạo 
 
 - **Mục tiêu**: Học hiểu ngôn ngữ tổng quát
 - **Nhiệm vụ**:
-		- Mô hình hóa ngôn ngữ: Dự đoán từ tiếp theo trong một chuỗi
-		- Mô hình hóa ngôn ngữ có che giấu: Dự đoán các từ bị thiếu trong một câu.
+  - Mô hình hóa ngôn ngữ: Dự đoán từ tiếp theo trong một chuỗi
+  - Mô hình hóa ngôn ngữ có che giấu: Dự đoán các từ bị thiếu trong một câu.
 - **Dữ liệu**: Đào tạo trên các kho ngữ liệu khổng lồ từ sách, bài báo, trang web, v.v.
 
 ### Tinh chỉnh

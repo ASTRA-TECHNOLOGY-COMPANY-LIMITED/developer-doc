@@ -8,15 +8,15 @@ Large language models (LLMs) are a type of artificial intelligence designed to u
 
 - **Purpose**: Convert text into manageable pieces. This helps the model handle diverse vocabulary efficiently.
 - **Process**:
-		- Split sentences into tokens, which can be words or subwords.
-		- Use techniques like Byte Pair Encoding (BPE) to handle unknown words by breaking them into known subword units.
+  - Split sentences into tokens, which can be words or subwords.
+  - Use techniques like Byte Pair Encoding (BPE) to handle unknown words by breaking them into known subword units.
 
 ### Embedding
 
 - **Purpose**: Transform tokens into numerical vectors that the model can process.
 - **Process**:
-		- Each token is mapped to a high-dimensional vector.
-		- These vectors capture semantic relationships between words.
+  - Each token is mapped to a high-dimensional vector.
+  - These vectors capture semantic relationships between words.
 
 ## Step 2: Model Architecture
 
@@ -43,8 +43,8 @@ Large language models (LLMs) are a type of artificial intelligence designed to u
 
 - **Objective**: Learn general language understanding
 - **Tasks**:
-		- Language Modeling: Predict the next word in a sequence
-		- Masked Language Modeling: Predict missing words in a sentence.
+  - Language Modeling: Predict the next word in a sequence
+  - Masked Language Modeling: Predict missing words in a sentence.
 - **Data**: Train on vast corpora from books, articles, websites, etc.
 
 ### Fine-Tuning
