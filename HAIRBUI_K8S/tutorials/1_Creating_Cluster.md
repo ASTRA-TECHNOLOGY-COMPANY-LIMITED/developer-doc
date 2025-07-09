@@ -130,6 +130,52 @@ sudo systemctl restart containerd
 sudo systemctl restart kubelet
 ```
 
+3. Pod CIDR not set or conflict
+
+Assume that we have a scenario: You have already created a cluster without setting `--pod-network-cidr` flag, and now you want to set pod network CIDR without reinitializing the cluster with `kubeadm reset` and `kubeadm init`. This is how you can do it:
+
+* First, edit the kubeadm ConfigMap:
+
+```bash
+kubectl -n kube-system edit configmap kubeadm-config
+
+# Set the field networking.podSubnet to your desired pod network CIDR, in my case it is 10.244.0.0/16 (Flannel)
+# Then it will look like this:
+data:
+  ClusterConfiguration: |
+    ...
+    networking:
+      podSubnet: 10.244.0.0/16
+```
+
+* Second, edit the static pod manifest file for `kube-controller-manager`
+
+```bash
+sudo vim /etc/kubernetes/manifests/kube-controller-manager.yaml
+
+# Add the following line to the command section
+--cluster-cidr=10.244.0.0/16
+```
+
+* Third, edit the node configuration (if you have more than 1 node, you will need to do this for all nodes)
+
+```bash
+kubectl edit node <node-name>
+
+# Add the podCIDR field to the node spec and it will look like this:
+spec:
+  ...
+  podCIDR: 10.244.0.0/16
+```
+
+* And finally, delete all CNI pods to restart the pod network plugin
+
+```bash
+kubectl delete pod -n kube-flannel -l app=flannel
+```
+
+> After you have done all of this, now the pod network plugin will be restarted, coreDNS will be reloaded and the cluster will be ready to use. (Check if all pods are running)
+
 ## Completely remove kubernetes
 
 ```bash
